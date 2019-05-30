@@ -12,7 +12,6 @@ mpiRank = MPI.rank(comm)
 print('MPI PROCESS RANK ', mpiRank)
 parameters["ghost_mode"] = "shared_facet"
 parameters["refinement_algorithm"] = "plaza"
-#info(parameters,True)
 parameters["mesh_partitioner"] = "ParMETIS"
 parameters["partitioning_approach"] = "PARTITION"
 
@@ -87,9 +86,7 @@ def solve_stokes(mesh, c, R, ii):
     outer.mark(domains, 1000)
 
     alphadot = Constant(1.)
-    #vel_p = Expression(("-alphadot*x[1]","alphadot*x[0]","0.0"),alphadot=alphadot, degree=2)    #rigid rotation   
-    #vel_p = Expression(("-c*x[2]*x[1]","x[0]-1/c*(asin( c*x[0]/sqrt( pow(c*x[0],2) + pow((1-c*x[2]),2) )) )", "c*x[0]*x[1]"),c=c, degree=2)
-    vel_p = Expression(("0.0","0.0","1.0"),c=c, degree=2)
+    vel_p = Expression(("0.0","0.0","1.0"),c=c, degree=2)   #rigid translation
 
     #---------------------------SOLVE STOKES--------------------------------------------------------------------------------------
     element_u = VectorElement("CG", mesh.ufl_cell(), 2)
@@ -115,13 +112,12 @@ def solve_stokes(mesh, c, R, ii):
     K = Constant(100)
     f = Constant((0.0, 0.0, 0.0))
     nu = Constant(1.)
-    a = nu*inner(grad(u), grad(v))*dx + div(v)*p*dx + q*div(u)*dx #-p*q/K*dx
+    a = nu*inner(grad(u), grad(v))*dx + div(v)*p*dx + q*div(u)*dx 
     L = inner(f, v)*dx
 
     # Form for use in constructing preconditioner matrix
     b = nu*inner(grad(u), grad(v))*dx + p*q*dx
 
-    #set_log_level(13)
     # Assemble system
     A, bb = assemble_system(a, L, bcs)
 
@@ -138,7 +134,6 @@ def solve_stokes(mesh, c, R, ii):
         print("\nStarting Stokes flow solution")
     start = time.time()
     U = Function(V)
-    #solver.solve(A, U.vector(), bb)
     solver.solve(U.vector(), bb)
     if (mpiRank == 0):
         print("Finished second solve in %f seconds"%(time.time()-start))
@@ -195,10 +190,7 @@ alpha_ref=0.025
 if (mpiRank == 0):
     print('\nSOLVING CASE FOR RIGID TRANSLATION, FOR ALPHA=%f\n'%(alpha_ref))  
 
-c=2.3562
-cs_name=['235']
 rr = [10,25,50,75,100,150,200]
-rr = [100,150,200]
 restot=[]
 for ri in rr:
     if (mpiRank == 0):
@@ -261,14 +253,12 @@ for ri in rr:
 
         # Assemble the error indicator form into the coefficient vector
         assemble(E_T, tensor=indicators.vector())
-        #File("indicator"+str(ii)+".pvd") << indicators
 
         markers = mark(alpha_ref, indicators)
         mesh = refine(mesh, markers, True)
         ncells = MPI.sum(comm,mesh.num_cells())
         if (mpiRank == 0):
             print('\nNew mesh has %i elements.'%(ncells))
-        #print('\nNew number of cells on process %i is %f.'%(MPI.rank(comm),mesh.num_cells()))
         u,p,resi = solve_stokes(mesh,0.,ri,ii)
 
         resi = [ncells] + resi
@@ -279,11 +269,7 @@ for ri in rr:
 
         value_old=value
 
-        '''if (diff < 0.015 and (ri == 2 or ri==10)):
-            if (mpiRank == 0):
-                print('\n\nTarget value difference lower than 0.015, interrupting at iteration %i, number of cells was %i\n'%(ii,ncells))
-            break'''
-        if (diff < 0.0053):
+        if (diff < 0.005):
             if (mpiRank == 0):
                 print('\n\nTarget value difference lower than 0.005, interrupting at iteration %i, number of cells was %i\n'%(ii,ncells))
             break

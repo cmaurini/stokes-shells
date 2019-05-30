@@ -12,7 +12,8 @@ mpiRank = MPI.rank(comm)
 print('MPI PROCESS RANK ', mpiRank)
 parameters["ghost_mode"] = "shared_facet"
 parameters["refinement_algorithm"] = "plaza"
-#info(parameters,True)
+parameters["mesh_partitioner"] = "ParMETIS"
+parameters["partitioning_approach"] = "PARTITION"
 
 outdir = 'pp/'
 omega = Constant(1.)
@@ -85,9 +86,7 @@ def solve_stokes(mesh, c, cname, ii):
     outer.mark(domains, 1000)
 
     alphadot = Constant(1.)
-    #vel_p = Expression(("-alphadot*x[1]","alphadot*x[0]","0.0"),alphadot=alphadot, degree=2)    #rigid rotation   
-    #vel_p = Expression(("-c*x[2]*x[1]","x[0]-1/c*(asin( c*x[0]/sqrt( pow(c*x[0],2) + pow((1-c*x[2]),2) )) )", "c*x[0]*x[1]"),c=c, degree=2)
-    vel_p = Expression(("0.0","0.0","1.0"),c=c, degree=2)
+    vel_p = Expression(("0.0","0.0","1.0"),c=c, degree=2)       #rigid translation
 
     #---------------------------SOLVE STOKES--------------------------------------------------------------------------------------
     element_u = VectorElement("CG", mesh.ufl_cell(), 2)
@@ -103,7 +102,6 @@ def solve_stokes(mesh, c, cname, ii):
     (v, q) = split(testfields)
 
     noslip = Constant((0.0, 0.0, 0.0))
-    #bc1 = DirichletBC(V.sub(0), fpve, domains2, 1)
     bc1 = DirichletBC(V.sub(0), vel_p, domains, 1)
     bc2 = DirichletBC(V.sub(0), noslip, domains, 1000)
     # Collect boundary conditions
@@ -113,13 +111,12 @@ def solve_stokes(mesh, c, cname, ii):
     K = Constant(100)
     f = Constant((0.0, 0.0, 0.0))
     nu = Constant(1.)
-    a = nu*inner(grad(u), grad(v))*dx + div(v)*p*dx + q*div(u)*dx #-p*q/K*dx
+    a = nu*inner(grad(u), grad(v))*dx + div(v)*p*dx + q*div(u)*dx 
     L = inner(f, v)*dx
 
     # Form for use in constructing preconditioner matrix
     b = nu*inner(grad(u), grad(v))*dx + p*q*dx
 
-    #set_log_level(13)
     # Assemble system
     A, bb = assemble_system(a, L, bcs)
 
@@ -136,7 +133,6 @@ def solve_stokes(mesh, c, cname, ii):
         print("\nStarting Stokes flow solution")
     start = time.time()
     U = Function(V)
-    #solver.solve(A, U.vector(), bb)
     solver.solve(U.vector(), bb)
     if (mpiRank == 0):
         print("Finished second solve in %f seconds"%(time.time()-start))
@@ -192,8 +188,7 @@ def solve_stokes(mesh, c, cname, ii):
 alpha_ref=0.02
 if (mpiRank == 0):
     print('\nSOLVING CASE FOR RIGID TRANSLATION, FOR ALPHA=%f\n'%(alpha_ref))  
-cs=[0.]
-cs_name=['0']
+
 mesh=Mesh(MPI.comm_world)
 filename = 'bfile_alpha_c_0.h5'
 if (mpiRank == 0):
@@ -252,14 +247,12 @@ while True:
 
     # Assemble the error indicator form into the coefficient vector
     assemble(E_T, tensor=indicators.vector())
-    #File("indicator"+str(ii)+".pvd") << indicators
 
     markers = mark(alpha_ref, indicators)
     mesh = refine(mesh, markers, True)
     ncells = MPI.sum(comm,mesh.num_cells())
     if (mpiRank == 0):
         print('\nNew mesh has %i elements.'%(ncells))
-    #print('\nNew number of cells on process %i is %f.'%(MPI.rank(comm),mesh.num_cells()))
     u,p,resi = solve_stokes(mesh,0.,'0',(ii+1))
 
     resi = [ncells] + resi
@@ -284,7 +277,7 @@ while True:
     ii = ii+1
 
 if (mpiRank == 0):
-    print(res)
-if (mpiRank == 0):
     print('\n',dres)
+if (mpiRank == 0):
+    print(res)
 quit()
