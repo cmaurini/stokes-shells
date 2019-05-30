@@ -1,0 +1,334 @@
+MPI PROCESS RANK  0
+MPI PROCESS RANK  1
+MPI PROCESS RANK  2
+MPI PROCESS RANK  3
+MPI PROCESS RANK  4
+MPI PROCESS RANK  5
+MPI PROCESS RANK  6
+MPI PROCESS RANK  7
+
+SOLVING CASE FOR RIGID ROTATION, FOR ALPHA=0.020000
+
+Reading file bfile_alpha_c_0.h5
+
+
+Read new mesh, number of cells: 27453.
+
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 27453 cells.
+
+Mesh hmax is: 1.006265
+Mesh hmin is: 0.066592
+
+Starting Stokes flow solution
+Finished second solve in 5.843502 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[-0.002986070703297816, 0.00798739507789481, 0.000930177130505109]
+Torque
+[0.004196785885747159, -0.0042450096468164165, 8.821472688542151]
+[0.0, -0.002986070703297816, 0.00798739507789481, 0.000930177130505109, 0.004196785885747159, -0.0042450096468164165, 8.821472688542151]
+
+Solved over starting mesh. Start refinement iteration
+
+
+
+-------------------------------------------------Iteration 1
+
+
+Total error is 52.960099, fraction is 1.059202 with given alpha value 0.020000
+
+Error on processor 7 is 9.097771, fraction is 0.181955, marked 249 cells
+
+Error on processor 1 is 3.020753, fraction is 0.060415, marked 0 cells
+
+Error on processor 2 is 0.000104, fraction is 0.000002, marked 0 cells
+
+Error on processor 3 is 0.000168, fraction is 0.000003, marked 0 cells
+
+Error on processor 4 is 7.085026, fraction is 0.141701, marked 47 cells
+
+Error on processor 5 is 11.748312, fraction is 0.234966, marked 15 cells
+
+Error on processor 6 is 10.104203, fraction is 0.202084, marked 142 cells
+
+
+
+Marked 548 cells
+
+Error on processor 0 is 11.903763, fraction is 0.238075, marked 95 cells
+
+
+New mesh has 66867 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 66867 cells.
+
+Mesh hmax is: 1.870853
+Mesh hmin is: 0.034605
+
+Starting Stokes flow solution
+Finished second solve in 14.726552 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.08112326752172438, -0.027876105875185964, -0.0013115764564994453]
+Torque
+[-0.00047769743102835235, 0.0006440398905911518, 9.51811231539645]
+[0.0, 0.08112326752172438, -0.027876105875185964, -0.0013115764564994453, -0.00047769743102835235, 0.0006440398905911518, 9.51811231539645]
+
+Variation in target value is 0.078971 (>0.01), number of cells is 66867. Continuing with next iteration.
+
+
+
+-------------------------------------------------Iteration 2
+Error on processor 4 is 2.496867, fraction is 0.049937, marked 188 cells
+
+Error on processor 5 is 3.051548, fraction is 0.061031, marked 15 cells
+
+
+
+Total error is 13.270955, fraction is 0.265419 with given alpha value 0.020000
+
+
+
+Marked 1321 cells
+
+Error on processor 0 is 2.930019, fraction is 0.058600, marked 365 cells
+
+Error on processor 6 is 0.185215, fraction is 0.003704, marked 0 cells
+
+Error on processor 7 is 0.000302, fraction is 0.000006, marked 0 cells
+
+Error on processor 1 is 1.460640, fraction is 0.029213, marked 290 cells
+
+Error on processor 2 is 1.645445, fraction is 0.032909, marked 68 cells
+
+Error on processor 3 is 1.500921, fraction is 0.030018, marked 395 cells
+
+
+New mesh has 137313 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 137313 cells.
+
+Mesh hmax is: 2.199616
+Mesh hmin is: 0.017243
+
+Starting Stokes flow solution
+Finished second solve in 28.274725 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.07842800695593999, 0.04522109586267398, -0.0004974973647296261]
+Torque
+[-0.000736786265488093, -4.4429939733036956e-05, 9.997211316901975]
+[0.0, 0.07842800695593999, 0.04522109586267398, -0.0004974973647296261, -0.000736786265488093, -4.4429939733036956e-05, 9.997211316901975]
+
+Variation in target value is 0.050336 (>0.01), number of cells is 137313. Continuing with next iteration.
+
+
+
+-------------------------------------------------Iteration 3
+
+
+Total error is 6.096592, fraction is 0.121932 with given alpha value 0.020000
+
+
+
+Marked 3554 cells
+
+Error on processor 0 is 0.459269, fraction is 0.009185, marked 485 cells
+
+Error on processor 3 is 0.724855, fraction is 0.014497, marked 352 cells
+
+Error on processor 6 is 0.883739, fraction is 0.017675, marked 466 cells
+
+Error on processor 7 is 0.135413, fraction is 0.002708, marked 0 cells
+
+Error on processor 1 is 0.589538, fraction is 0.011791, marked 222 cells
+
+Error on processor 2 is 0.424531, fraction is 0.008491, marked 276 cells
+
+Error on processor 5 is 0.859870, fraction is 0.017197, marked 172 cells
+
+Error on processor 4 is 2.019376, fraction is 0.040388, marked 1581 cells
+
+
+New mesh has 293075 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 293075 cells.
+
+Mesh hmax is: 1.576038
+Mesh hmin is: 0.008768
+
+Starting Stokes flow solution
+Finished second solve in 61.069464 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.04597811108314698, 0.02595273397180653, 0.00020066697928728018]
+Torque
+[-0.0007379973760346971, 1.6441637945038335e-05, 10.407468417679471]
+[0.0, 0.04597811108314698, 0.02595273397180653, 0.00020066697928728018, -0.0007379973760346971, 1.6441637945038335e-05, 10.407468417679471]
+
+Variation in target value is 0.041037 (>0.01), number of cells is 293075. Continuing with next iteration.
+
+
+
+-------------------------------------------------Iteration 4
+
+
+Total error is 2.814239, fraction is 0.056285 with given alpha value 0.020000
+
+
+
+Marked 7979 cells
+
+Error on processor 0 is 0.306945, fraction is 0.006139, marked 996 cells
+
+Error on processor 4 is 0.406446, fraction is 0.008129, marked 1246 cells
+
+Error on processor 3 is 0.516329, fraction is 0.010327, marked 2362 cells
+
+Error on processor 6 is 0.173727, fraction is 0.003475, marked 0 cells
+
+Error on processor 7 is 0.417894, fraction is 0.008358, marked 355 cells
+
+Error on processor 1 is 0.508639, fraction is 0.010173, marked 957 cells
+
+Error on processor 2 is 0.193729, fraction is 0.003875, marked 1124 cells
+
+Error on processor 5 is 0.290528, fraction is 0.005811, marked 939 cells
+
+
+New mesh has 619264 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 619264 cells.
+
+Mesh hmax is: 40.952891
+Mesh hmin is: 0.018964
+
+Starting Stokes flow solution
+Finished second solve in 116.145569 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.005464479460600025, -0.006329130563291763, 0.0004530265549084944]
+Torque
+[-0.00021331921860133366, 0.00014229270974543953, 10.672970488656102]
+[0.0, 0.005464479460600025, -0.006329130563291763, 0.0004530265549084944, -0.00021331921860133366, 0.00014229270974543953, 10.672970488656102]
+
+Variation in target value is 0.025511 (>0.01), number of cells is 619264. Continuing with next iteration.
+
+
+
+-------------------------------------------------Iteration 5
+
+
+Total error is 1.667918, fraction is 0.033358 with given alpha value 0.020000
+
+Error on processor 5 is 0.257632, fraction is 0.005153, marked 1161 cells
+
+Error on processor 4 is 0.125484, fraction is 0.002510, marked 1307 cells
+
+Error on processor 3 is 0.155926, fraction is 0.003119, marked 1408 cells
+
+Error on processor 6 is 0.134486, fraction is 0.002690, marked 4182 cells
+
+Error on processor 7 is 0.178587, fraction is 0.003572, marked 2385 cells
+
+Error on processor 1 is 0.272669, fraction is 0.005453, marked 1273 cells
+
+Error on processor 2 is 0.122744, fraction is 0.002455, marked 1066 cells
+
+
+
+Marked 14808 cells
+
+Error on processor 0 is 0.420390, fraction is 0.008408, marked 2026 cells
+
+
+New mesh has 1256128 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 1256128 cells.
+
+Mesh hmax is: 0.508776
+Mesh hmin is: 0.002192
+
+Starting Stokes flow solution
+Finished second solve in 228.147781 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.001024650468396171, -0.009368330745458842, 0.000543735820436413]
+Torque
+[-0.0005707176003462318, 0.0002369093369340964, 10.84689943541322]
+[0.0, 0.001024650468396171, -0.009368330745458842, 0.000543735820436413, -0.0005707176003462318, 0.0002369093369340964, 10.84689943541322]
+
+Variation in target value is 0.016296 (>0.01), number of cells is 1256128. Continuing with next iteration.
+
+
+
+-------------------------------------------------Iteration 6
+
+
+Total error is 1.113622, fraction is 0.022272 with given alpha value 0.020000
+
+
+
+Marked 30508 cells
+
+Error on processor 0 is 0.419845, fraction is 0.008397, marked 1452 cells
+
+Error on processor 2 is 0.058763, fraction is 0.001175, marked 0 cells
+
+Error on processor 5 is 0.072138, fraction is 0.001443, marked 3521 cells
+
+Error on processor 4 is 0.089707, fraction is 0.001794, marked 4990 cells
+
+Error on processor 3 is 0.113583, fraction is 0.002272, marked 2467 cells
+
+Error on processor 6 is 0.100640, fraction is 0.002013, marked 6829 cells
+
+Error on processor 7 is 0.162955, fraction is 0.003259, marked 3935 cells
+
+Error on processor 1 is 0.095990, fraction is 0.001920, marked 7314 cells
+
+
+New mesh has 2494519 elements.
+c value is 0.000000
+
+
+Starting Stokes flow solution with: 2494519 cells.
+
+Mesh hmax is: 40.952891
+Mesh hmin is: 0.001067
+
+Starting Stokes flow solution
+Finished second solve in 374.353373 seconds
+Writing solutions
+Integrating forces/torques
+Force:
+[0.004499155249888975, -0.01851947036514101, 0.0010497911945212897]
+Torque
+[0.0008297906677198064, 0.0005660003268108882, 10.92253457340881]
+[0.0, 0.004499155249888975, -0.01851947036514101, 0.0010497911945212897, 0.0008297906677198064, 0.0005660003268108882, 10.92253457340881]
+
+
+Target value difference lower than 0.01, interrupting at iteration 6, number of cells was 2494519
+
+[[27453.0, 0.0, -0.002986070703297816, 0.00798739507789481, 0.000930177130505109, 0.004196785885747159, -0.0042450096468164165, 8.821472688542151], [66867.0, 0.0, 0.08112326752172438, -0.027876105875185964, -0.0013115764564994453, -0.00047769743102835235, 0.0006440398905911518, 9.51811231539645], [137313.0, 0.0, 0.07842800695593999, 0.04522109586267398, -0.0004974973647296261, -0.000736786265488093, -4.4429939733036956e-05, 9.997211316901975], [293075.0, 0.0, 0.04597811108314698, 0.02595273397180653, 0.00020066697928728018, -0.0007379973760346971, 1.6441637945038335e-05, 10.407468417679471], [619264.0, 0.0, 0.005464479460600025, -0.006329130563291763, 0.0004530265549084944, -0.00021331921860133366, 0.00014229270974543953, 10.672970488656102], [1256128.0, 0.0, 0.001024650468396171, -0.009368330745458842, 0.000543735820436413, -0.0005707176003462318, 0.0002369093369340964, 10.84689943541322], [2494519.0, 0.0, 0.004499155249888975, -0.01851947036514101, 0.0010497911945212897, 0.0008297906677198064, 0.0005660003268108882, 10.92253457340881]]
+
+ [0.07897089878871767, 0.05033550620436956, 0.041037154039535735, 0.025510725598322674, 0.016296207971527844, 0.006972973101295173]
