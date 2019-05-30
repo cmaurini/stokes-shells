@@ -1,4 +1,3 @@
-=============
 Stokes-shells
 =============
 
@@ -9,13 +8,16 @@ Description
 ===========
 
 The codes are based on the use of the `FEniCS
-Project <http://fenicsproject.org>`_.
+Project <http://fenicsproject.org>`.
 
 * The codes are compatible with the 2019.1.0 release of the FEniCS Project**.
 
 This repository is a supplementary marterial of the paper
+
 *A neutrally stable shell in a Stokes flow: a rotational Taylor's sheet*
+
 by G.Corsi, A.DeSimone, C.Maurini and S.Vidoli}
+
 
 The paper is currently under review on PRSA
 
